@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1>Lançamentos</h1>
+    </div>
+    <div class="ui-g-12 ui-fluid">
+      <label>Descrição</label>
+      <input pInputText type="text" style="width: 100%;">
+    </div>
+    <div class="ui-g-12">
+      <label style="display: block;">Vencimento</label>
+      <input pInputText type="text" style="width: 100px">
+      <label style="margin: 0 10px;">Até</label>
+      <input pInputText type="text" style="width: 100px">
+    </div>
+    <div class="ui-g-12">
+      <a pButton label="Pesquisar" style="color: white ;  text-decoration: none; height: 40px; margin: 10px 0;" ></a>
+    </div>
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <div class="p-grid">
+        <div class="p-col-12">
+          <p-table [value]="lancamentos" [paginator]="true" [rows]="2" [responsive]="true" class="custom-table">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Pessoa</th>
+                <th>Descrição</th>
+                <th class="col-data-header">Vencimento</th>
+                <th class="col-data-header">Pagamento</th>
+                <th class="col-valor-header">Valor</th>
+                <th class="col-acoes-header">Ações</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lancamento>
+              <tr>
+                <td>{{ lancamento.pessoa }}</td>
+                <td>{{ lancamento.descricao }}</td>
+                <td class="col-data">{{ lancamento.dataVencimento }}</td>
+                <td class="col-data">{{ lancamento.dataPagamento }}</td>
+                <td class="col-valor">
+                  <span [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lancamento.valor }}</span>
+                </td>
+                <td class="col-acoes">
+                  <button pButton pTooltip="Editar" tooltipPosition="top" icon="pi pi-pencil" class="p-button-rounded p-button-secondary"></button>
+                  <button pButton pTooltip="Excluir" tooltipPosition="top" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+        </div>
+
+        <div class="p-col-12">
+          <a pButton label="Novo Lançamento" style="color: white ;  text-decoration: none; height: 40px;"></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
