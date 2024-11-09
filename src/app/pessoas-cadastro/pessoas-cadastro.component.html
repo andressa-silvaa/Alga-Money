@@ -1,44 +1,75 @@
 <div class="container">
-  <form>
+  <form #pessoasForm="ngForm" (ngSubmit)="salvar(pessoasForm)">
     <div class="row">
       <div class="col-12 mt-3">
         <h1>Nova Pessoa</h1>
       </div>
       <div class="col-12 mt-5 mb-2">
-        <label for="nomeCompleto" class="form-label">Nome completo</label>
-        <input pInputText type="text" id="nomeCompleto" class="form-control">
+        <label for="nomeCompleto" class="form-label">Nome completo*</label>
+        <input pInputText type="text" id="nomeCompleto" class="form-control" ngModel name="nomeCompleto"
+        #nomeCompleto="ngModel" [ngClass]="{'is-invalid': nomeCompleto.touched && nomeCompleto.invalid}" required minlength="10">
+        <div *ngIf="nomeCompleto.errors?.['required'] && nomeCompleto.touched" class="invalid-feedback">
+          Informe um nome
+        </div>
+        <div *ngIf="nomeCompleto.errors?.['minlength'] && nomeCompleto.touched" class="invalid-feedback">
+          Necessário ao menos 10 caracteres
+        </div>
       </div>
       <div class="col-8 mb-2">
-        <label for="logradouro" class="form-label">Logradouro</label>
-        <input pInputText type="text" id="logradouro" class="form-control">
+        <label for="logradouro" class="form-label">Logradouro*</label>
+        <input pInputText type="text" id="logradouro" class="form-control" ngModel name="logradouro"
+        #logradouro="ngModel" [ngClass]="{'is-invalid': logradouro.touched && logradouro.invalid}" required>
+        <div *ngIf="logradouro.errors?.['required'] && logradouro.touched" class="invalid-feedback">
+          Informe um logradouro
+        </div>
       </div>
       <div class="col-4 mb-2">
-        <label for="numero" class="form-label">Número</label>
-        <p-inputNumber id="numero" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+        <label for="numero" class="form-label">Número*</label>
+        <p-inputNumber id="numero" mode="decimal" inputId="withoutgrouping" [useGrouping]="false" ngModel name="numero"
+        #numero="ngModel" [ngClass]="{'is-invalid': numero.touched && numero.invalid}" required></p-inputNumber>
+        <div *ngIf="numero.errors?.['required'] && numero.touched" class="invalid-feedback">
+          Informe um número
+        </div>
       </div>
       <div class="col-xl-4 col-12 mb-2">
         <label for="complemento" class="form-label">Complemento</label>
         <input pInputText type="text" id="complemento" class="form-control">
       </div>
       <div class="col-xl-4 col-6 mb-2">
-        <label for="bairro" class="form-label">Bairro</label>
-        <input pInputText type="text" id="bairro" class="form-control">
+        <label for="bairro" class="form-label">Bairro*</label>
+        <input pInputText type="text" id="bairro" class="form-control" ngModel name="bairro"
+        #bairro="ngModel" [ngClass]="{'is-invalid': bairro.touched && bairro.invalid}" required>
+        <div *ngIf="bairro.errors?.['required'] && bairro.touched" class="invalid-feedback">
+          Informe um bairro
+        </div>
       </div>
       <div class="col-xl-4 col-6 mb-2">
-        <label for="cep" class="form-label">CEP</label>
-        <p-inputMask id="cep" mask="99999-999" class="form-control" placeholder="00000-000"></p-inputMask>
+        <label for="cep" class="form-label">CEP*</label>
+        <p-inputMask id="cep" mask="99999-999" class="form-control" placeholder="00000-000" ngModel name="cep"
+        #cep="ngModel" [ngClass]="{'is-invalid': cep.touched && cep.invalid}" required></p-inputMask>
+        <div *ngIf="cep.errors?.['required'] && cep.touched" class="invalid-feedback">
+          Informe um cep
+        </div>
       </div>
       <div class="col-md-6 col-12 mb-2">
-        <label for="cidade" class="form-label">Cidade</label>
-        <input pInputText type="text" id="cidade" class="form-control">
+        <label for="cidade" class="form-label">Cidade*</label>
+        <input pInputText type="text" id="cidade" class="form-control" ngModel name="cidade"
+        #cidade="ngModel" [ngClass]="{'is-invalid': cidade.touched && cidade.invalid}" required>
+        <div *ngIf="cidade.errors?.['required'] && cidade.touched" class="invalid-feedback">
+          Informe uma cidade
+        </div>
       </div>
       <div class="col-md-6 col-12 mb-2">
-        <label for="estado" class="form-label">Estado</label>
-        <input pInputText type="text" id="estado" class="form-control">
+        <label for="estado" class="form-label">Estado*</label>
+        <input pInputText type="text" id="estado" class="form-control" ngModel name="estado"
+        #estado="ngModel" [ngClass]="{'is-invalid': estado.touched && estado.invalid}" required>
+        <div *ngIf="estado.errors?.['required'] && estado.touched" class="invalid-feedback">
+          Informe um estado
+        </div>
       </div>
       <div class="ui-g-12 mt-4 mb-4">
-        <button type="submit" class="btn btn-primary col-xl-1 col-md-2 col-3">Salvar</button>
-        <button type="button" class="btn btn-secondary col-xl-1 col-md-2 col-3" style="background-color: #3985f89c;">Novo</button>
+        <button type="submit" class="btn btn-primary col-xl-1 col-md-2 col-3" [disabled]="pessoasForm.invalid">Salvar</button>
+        <button type="button" class="btn btn-primary  col-xl-1 col-md-2 col-3">Novo</button>
         <a href="/lancamentos-cadastro">Voltar à pesquisa</a>
       </div>
     </div>

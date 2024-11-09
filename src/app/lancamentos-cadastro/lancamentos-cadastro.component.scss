@@ -17,6 +17,9 @@ a:hover{
 label{
   font-weight: 600;
 }
+::ng-deep .is-invalid .p-calendar .p-inputtext{
+  border-color: red!important;
+}
 ::ng-deep .p-calendar{
   display: flex;
   align-items: center;

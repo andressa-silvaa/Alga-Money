@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #lancamentosForm="ngForm" (ngSubmit)="salvar(lancamentosForm)">
     <div class="row">
       <div class="col-12 mt-3">
         <h1>Novo lançamento</h1>
@@ -9,7 +9,11 @@
       </div>
       <div class="col-6 col-md-3 mb-2">
         <label for="vencimento" class="form-label">Vencimento</label>
-        <p-calendar id="vencimento" class="calendario"dateFormat="dd/mm/yy" [showIcon]="true" [showOnFocus]="false" [readonlyInput]="false" (input)="applyMask($event)"></p-calendar>
+        <p-calendar id="vencimento" class="calendario"dateFormat="dd/mm/yy" [showIcon]="true" [showOnFocus]="false" [readonlyInput]="false" (input)="applyMask($event)" ngModel name="vencimento"
+        #vencimento="ngModel" [ngClass]="{'is-invalid': vencimento.touched && vencimento.invalid}" required></p-calendar>
+        <div *ngIf="vencimento.errors?.['required'] && vencimento.touched" class="invalid-feedback">
+          Informe uma data
+        </div>
       </div>
       <div class="col-6 col-md-3 mb-2">
         <label for="recebimento" class="form-label">{{tipo.value == 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
@@ -17,27 +21,46 @@
       </div>
       <div class="col-12 col-md-9 mb-2">
         <label for="descricao" class="form-label">Descrição</label>
-        <input pInputText type="text" id="descricao" class="form-control">
+        <input pInputText ngModel type="text" id="descricao" class="form-control" name="descricao"
+        #descricao="ngModel" [ngClass]="{'is-invalid': descricao.touched && descricao.invalid}" required minlength="5">
+        <div *ngIf="descricao.errors?.['required'] && descricao.touched" class="invalid-feedback">
+          Informe uma descrição
+        </div>
+        <div *ngIf="descricao.errors?.['minlength'] && descricao.touched" class="invalid-feedback">
+          Necessário ao menos 5 caracteres
+        </div>
       </div>
       <div class="col-12 col-md-3 mb-2">
         <label for="valor" class="form-label">Valor</label>
-        <p-inputNumber id="valor" inputId="currency-br" mode="currency" currency="BRL" locale="pt-BR" placeholder="R$ 0,00"></p-inputNumber>
+        <p-inputNumber id="valor" inputId="currency-br" mode="currency" currency="BRL" locale="pt-BR" placeholder="R$ 0,00" ngModel name="valor"
+        #valor="ngModel" [ngClass]="{'is-invalid': valor.touched && valor.invalid}" required ></p-inputNumber>
+        <div *ngIf="valor.errors?.['required'] && valor.touched" class="invalid-feedback">
+          Informe um valor
+        </div>
       </div>
       <div class="col-12 col-md-6 mb-2">
         <label for="categoria" class="form-label">Categoria</label>
-        <p-dropdown id="categoria" [options]="categorias" [(ngModel)]="categoriaSelecionada" name="categoria"></p-dropdown>
+        <p-dropdown id="categoria" [options]="categorias" [(ngModel)]="categoriaSelecionada" name="categoria" ngModel
+        #categoria="ngModel" [ngClass]="{'is-invalid': categoria.touched && categoria.invalid}" required ></p-dropdown>
+        <div *ngIf="categoria.errors?.['required'] && categoria.touched" class="invalid-feedback">
+          Informe uma categoria
+        </div>
       </div>
       <div class="col-12 col-md-6 mb-2">
         <label for="pessoa" class="form-label">Pessoa</label>
-        <p-dropdown id="categoria" [options]="pessoas" [(ngModel)]="pessoaSelecionada" name="categoria"></p-dropdown>
+        <p-dropdown id="pessoa" [options]="pessoas" [(ngModel)]="pessoaSelecionada" name="pessoa" ngModel
+        #pessoa="ngModel" [ngClass]="{'is-invalid': pessoa.touched && pessoa.invalid}" required ></p-dropdown>
+        <div *ngIf="pessoa.errors?.['required'] && pessoa.touched" class="invalid-feedback">
+          Informe uma pessoa
+        </div>
       </div>
       <div class="col-md-12 mb-2">
         <label for="observacao" class="form-label">Observação</label>
         <textarea pInputTextarea type="text" id="observacao" class="form-control" rows="3"></textarea>
       </div>
       <div class="ui-g-12 mt-4 mb-4">
-        <button type="submit" class="btn btn-primary col-xl-1 col-md-2 col-3">Salvar</button>
-        <button type="button" class="btn btn-secondary col-xl-1 col-md-2 col-3" style="background-color: #3985f89c;">Novo</button>
+        <button type="submit" class="btn btn-primary col-xl-1 col-md-2 col-3" [disabled]="lancamentosForm.invalid">Salvar</button>
+        <button type="button" class="btn btn-primary col-xl-1 col-md-2 col-3">Novo</button>
         <a href="/lancamentos-cadastro">Voltar à pesquisa</a>
       </div>
     </div>

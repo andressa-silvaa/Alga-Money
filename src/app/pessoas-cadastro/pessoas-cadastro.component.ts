@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
@@ -65,5 +65,10 @@ export class PessoasCadastroComponent {
     }
     event.target.value = value;
   }
-
+  salvar(form: NgForm) {
+    if (form.valid) {
+      console.log(form.value);
+      // Implementar lógica de salvamento
+    }
+  }
 }
