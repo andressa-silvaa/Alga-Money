@@ -17,33 +17,34 @@ a:hover{
 label{
   font-weight: 600;
 }
-::ng-deep .p-calendar{
-  display: flex;
-  align-items: center;
-}
-::ng-deep .p-calendar .p-inputtext{
-  height: 38px;
-}
-::ng-deep .col-12 {
+::ng-deep .col-4 label,
+::ng-deep .col-4 p-inputNumber {
   display: flex;
   flex-direction: column;
 }
-
-::ng-deep .p-inputnumber {
+::ng-deep .p-inputnumber{
   width: 100%;
 }
-
 ::ng-deep .p-inputnumber .p-inputtext {
   width: 100%;
   height: 38px;
 }
+::ng-deep .p-inputmask {
+  display: inline-block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
 
-::ng-deep .p-calendar .p-datepicker-trigger {
+::ng-deep .p-inputmask input {
   height: 38px;
-  width: 40px;
-  display: flex;
-  border-radius: 0 5px 5px 0;
-  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+::ng-deep .p-inputmask:focus {
+  outline: none;
+  box-shadow: none;
 }
 ::ng-deep .p-button {
   display: inline-flex;

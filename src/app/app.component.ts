@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
+  imports: [
+    RouterOutlet,
     LancamentosPesquisaComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'algamoney';

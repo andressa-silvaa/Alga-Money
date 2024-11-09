@@ -1,0 +1,46 @@
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-12 mt-3">
+        <h1>Nova Pessoa</h1>
+      </div>
+      <div class="col-12 mt-5 mb-2">
+        <label for="nomeCompleto" class="form-label">Nome completo</label>
+        <input pInputText type="text" id="nomeCompleto" class="form-control">
+      </div>
+      <div class="col-8 mb-2">
+        <label for="logradouro" class="form-label">Logradouro</label>
+        <input pInputText type="text" id="logradouro" class="form-control">
+      </div>
+      <div class="col-4 mb-2">
+        <label for="numero" class="form-label">Número</label>
+        <p-inputNumber id="numero" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+      </div>
+      <div class="col-xl-4 col-12 mb-2">
+        <label for="complemento" class="form-label">Complemento</label>
+        <input pInputText type="text" id="complemento" class="form-control">
+      </div>
+      <div class="col-xl-4 col-6 mb-2">
+        <label for="bairro" class="form-label">Bairro</label>
+        <input pInputText type="text" id="bairro" class="form-control">
+      </div>
+      <div class="col-xl-4 col-6 mb-2">
+        <label for="cep" class="form-label">CEP</label>
+        <p-inputMask id="cep" mask="99999-999" class="form-control" placeholder="00000-000"></p-inputMask>
+      </div>
+      <div class="col-md-6 col-12 mb-2">
+        <label for="cidade" class="form-label">Cidade</label>
+        <input pInputText type="text" id="cidade" class="form-control">
+      </div>
+      <div class="col-md-6 col-12 mb-2">
+        <label for="estado" class="form-label">Estado</label>
+        <input pInputText type="text" id="estado" class="form-control">
+      </div>
+      <div class="ui-g-12 mt-4 mb-4">
+        <button type="submit" class="btn btn-primary col-xl-1 col-md-2 col-3">Salvar</button>
+        <button type="button" class="btn btn-secondary col-xl-1 col-md-2 col-3" style="background-color: #3985f89c;">Novo</button>
+        <a href="/lancamentos-cadastro">Voltar à pesquisa</a>
+      </div>
+    </div>
+  </form>
+</div>

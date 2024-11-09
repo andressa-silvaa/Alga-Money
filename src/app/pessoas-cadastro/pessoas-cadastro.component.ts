@@ -8,9 +8,10 @@ import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @Component({
-  selector: 'app-lancamentos-cadastro',
+  selector: 'app-pessoas-cadastro',
   standalone: true,
   imports: [
     CommonModule,
@@ -21,12 +22,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    InputNumberModule
+    InputNumberModule,
+    InputMaskModule
   ],
-  templateUrl: './lancamentos-cadastro.component.html',
-  styleUrls: ['./lancamentos-cadastro.component.scss'],
+  templateUrl: './pessoas-cadastro.component.html',
+  styleUrl: './pessoas-cadastro.component.scss'
 })
-export class LancamentosCadastroComponent {
+export class PessoasCadastroComponent {
   tipos = [
     {label : 'Receita' , value: 'RECEITA'},
     {label : 'Despesa' , value: 'DESPESA'}

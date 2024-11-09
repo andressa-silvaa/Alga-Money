@@ -4,31 +4,34 @@
       <div class="col-12 mt-3">
         <h1>Novo lançamento</h1>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-12 mt-5 mb-3">
+        <p-selectButton [options]="tipos" #tipo [(ngModel)]="tipoSelecionado" name="tipo"></p-selectButton>
+      </div>
+      <div class="col-6 col-md-3 mb-2">
         <label for="vencimento" class="form-label">Vencimento</label>
-        <input pInputText type="text" id="vencimento" class="form-control">
+        <p-calendar id="vencimento" class="calendario"dateFormat="dd/mm/yy" [showIcon]="true" [showOnFocus]="false" [readonlyInput]="false" (input)="applyMask($event)"></p-calendar>
       </div>
-      <div class="col-6 col-md-3">
-        <label for="recebimento" class="form-label">Recebimento</label>
-        <input pInputText type="text" id="recebimento" class="form-control">
+      <div class="col-6 col-md-3 mb-2">
+        <label for="recebimento" class="form-label">{{tipo.value == 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+        <p-calendar id="recebimento" class="calendario" dateFormat="dd/mm/yy" [showIcon]="true" [showOnFocus]="false" [readonlyInput]="false" (input)="applyMask($event)"></p-calendar>
       </div>
-      <div class="col-12 col-md-9">
+      <div class="col-12 col-md-9 mb-2">
         <label for="descricao" class="form-label">Descrição</label>
         <input pInputText type="text" id="descricao" class="form-control">
       </div>
-      <div class="col-12 col-md-3">
+      <div class="col-12 col-md-3 mb-2">
         <label for="valor" class="form-label">Valor</label>
-        <input pInputText type="text" id="valor" class="form-control" placeholder="R$0,0">
+        <p-inputNumber id="valor" inputId="currency-br" mode="currency" currency="BRL" locale="pt-BR" placeholder="R$ 0,00"></p-inputNumber>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 mb-2">
         <label for="categoria" class="form-label">Categoria</label>
-        <input pInputText type="text" id="categoria" class="form-control">
+        <p-dropdown id="categoria" [options]="categorias" [(ngModel)]="categoriaSelecionada" name="categoria"></p-dropdown>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 mb-2">
         <label for="pessoa" class="form-label">Pessoa</label>
-        <input pInputText type="text" id="pessoa" class="form-control">
+        <p-dropdown id="categoria" [options]="pessoas" [(ngModel)]="pessoaSelecionada" name="categoria"></p-dropdown>
       </div>
-      <div class="col-md-12">
+      <div class="col-md-12 mb-2">
         <label for="observacao" class="form-label">Observação</label>
         <textarea pInputTextarea type="text" id="observacao" class="form-control" rows="3"></textarea>
       </div>
